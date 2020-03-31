@@ -7,19 +7,22 @@ import { lightTheme, darkTheme } from './themes';
 import GlobalStyles from './styles';
 
 // Custom components
+import Header from './components/Header';
 import Main from './components/Main';
 
 const App = () => {
   const [currentTheme, setCurrentTheme] = useState(lightTheme);
 
+  const isLightTheme = () => (currentTheme === lightTheme ? true : false);
   const toggleTheme = () => {
-    currentTheme === lightTheme ? setCurrentTheme(darkTheme) : setCurrentTheme(lightTheme);
+    isLightTheme() ? setCurrentTheme(darkTheme) : setCurrentTheme(lightTheme);
   };
 
   return (
     <ThemeProvider theme={currentTheme}>
       <GlobalStyles />
-      <Main>APP</Main>
+      <Header theme={currentTheme} isLight={isLightTheme()} toggleTheme={toggleTheme} />
+      <Main>Main container</Main>
     </ThemeProvider>
   );
 };
