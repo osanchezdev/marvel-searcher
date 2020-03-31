@@ -1,1 +1,1 @@
-export { default } from './styles/Header';
+export { default } from './Header';

@@ -1,1 +1,1 @@
-export { default } from './styles/Main';
+export { default } from './Main';
