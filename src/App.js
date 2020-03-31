@@ -9,6 +9,7 @@ import GlobalStyles from './styles';
 // Custom components
 import Header from './components/Header';
 import Main from './components/Main';
+import CardsList from './components/CardsList';
 
 const App = () => {
   const [currentTheme, setCurrentTheme] = useState(lightTheme);
@@ -22,7 +23,9 @@ const App = () => {
     <ThemeProvider theme={currentTheme}>
       <GlobalStyles />
       <Header theme={currentTheme} isLight={isLightTheme()} toggleTheme={toggleTheme} />
-      <Main>Main container</Main>
+      <Main>
+        <CardsList />
+      </Main>
     </ThemeProvider>
   );
 };
