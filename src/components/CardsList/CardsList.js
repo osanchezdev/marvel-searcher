@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import CardsListWrapper from './styles/CardsListWrapper';
 import Card from './../Card';
+
 const CardsList = () => {
   return (
     <CardsListWrapper>
@@ -10,7 +10,5 @@ const CardsList = () => {
     </CardsListWrapper>
   );
 };
-
-CardsList.propTypes = {};
 
 export default CardsList;
