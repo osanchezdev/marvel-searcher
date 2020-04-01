@@ -14,7 +14,7 @@ const Comic = ({ comic }) => {
       <ComicThumbnail src={`${thumbnail.path}.${thumbnail.extension}`} alt={title} title={title} />
       <ComicInfo>
         <ComicTitle>{title}</ComicTitle>
-        <ComicDescription>{description}</ComicDescription>
+        <ComicDescription>{description ? description : 'No description.'}</ComicDescription>
       </ComicInfo>
     </ComicWrapper>
   );

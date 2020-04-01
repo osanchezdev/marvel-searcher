@@ -19,8 +19,10 @@ const ComicsProvider = ({ children }) => {
         apikey: API_KEY,
         hash: HASH,
       });
-      const comicsResponse = await axios.get(`${collectionUri}?${queries}&limit=20`);
-      console.log(comicsResponse);
+      const comicsResponse = await axios.get(
+        `${collectionUri}?${queries}&orderBy=onsaleDate&limit=20`,
+      );
+      // console.log(comicsResponse);
       setLoading(false);
       setComics(comicsResponse.data.data.results);
     };

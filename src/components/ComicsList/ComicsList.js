@@ -12,8 +12,10 @@ const ComicsList = () => {
     <ComicsListWrapper>
       {loading ? (
         <Loader loading={loading} />
-      ) : (
+      ) : comics.length ? (
         comics.map(comic => <Comic key={comic.id} comic={comic} />)
+      ) : (
+        'No comics.'
       )}
     </ComicsListWrapper>
   );

@@ -6,7 +6,7 @@ const LoaderWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  height: 450px;
+  height: 350px;
 `;
 
 export default LoaderWrapper;

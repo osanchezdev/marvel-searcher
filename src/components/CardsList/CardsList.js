@@ -7,7 +7,7 @@ import { CharactersContext } from '../../context';
 
 const CardsList = () => {
   const { characters } = useContext(CharactersContext);
-  console.log(characters);
+
   return (
     <CardsListWrapper>
       {characters.map(character => (

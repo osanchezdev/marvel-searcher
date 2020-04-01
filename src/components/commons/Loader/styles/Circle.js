@@ -16,8 +16,8 @@ const Circle = styled.div`
   border-bottom: 2px solid #ff8787;
   border-left: 4px solid #f0141e;
   background: transparent;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
 `;
 

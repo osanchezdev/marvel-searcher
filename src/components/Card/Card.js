@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { number, string, shape } from 'prop-types';
+import { string, shape } from 'prop-types';
 
 import CardWrapper from './styles/CardWrapper';
 import CardImage from './styles/CardImage';
@@ -11,7 +11,7 @@ import { ComicsContext } from '../../context';
 const Card = ({ character }) => {
   const [showModal, setShowModal] = useState(false);
   const { setCollectionUri, setLoading } = useContext(ComicsContext);
-  const { id, name, thumbnail, comics } = character;
+  const { name, thumbnail, comics } = character;
 
   const handleOpen = () => {
     setLoading(true);
@@ -36,7 +36,6 @@ const Card = ({ character }) => {
 
 Card.propTypes = {
   character: shape({
-    id: number,
     name: string,
     thumbnail: shape({
       path: string,
