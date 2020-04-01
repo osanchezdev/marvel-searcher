@@ -6,9 +6,14 @@ const HeaderInput = styled.input`
   padding: 5px;
   padding-left: ${({ active }) => (active ? '0' : '25px')};
   border: none;
-  background: #fff;
+  background: ${({ theme }) => theme.input};
   color: ${({ theme }) => theme.text};
-  transition: padding-left 0.3s ease;
+  transition-property: background, color, padding-left;
+  transition: all 300ms ease;
+
+  &::placeholder {
+    color: ${({ theme }) => theme.text};
+  }
 `;
 
 export default HeaderInput;

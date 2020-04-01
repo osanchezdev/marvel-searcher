@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { oneOfType, arrayOf, node } from 'prop-types';
 
 import MainWrapper from './styles/MainWrapper';
