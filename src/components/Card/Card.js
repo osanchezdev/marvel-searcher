@@ -29,7 +29,7 @@ const Card = ({ character }) => {
         <CardImage src={`${thumbnail.path}.${thumbnail.extension}`} alt={name} title={name} />
         <CardTitleWrapper>{name}</CardTitleWrapper>
       </CardWrapper>
-      <Modal show={showModal} handleClose={handleClose} title={name} />
+      {showModal && <Modal show={showModal} handleClose={handleClose} title={name} />}
     </>
   );
 };

@@ -25,7 +25,7 @@ const CharactersProvider = ({ children }) => {
         hash: HASH,
       });
       const charactersResponse = await axios.get(
-        `${API_URL}characters?${queries}${searchQueries()}&limit=${limit}`,
+        `${API_URL}/characters?${queries}${searchQueries()}&limit=${limit}`,
       );
       // console.log(charactersResponse);
       // const comic = await axios.get(

@@ -4,8 +4,8 @@ import { shape, bool, func } from 'prop-types';
 // import axios from 'axios'
 
 //  Logo
-import logoSrc from '../../assets/images/marvel.svg';
-import searchIconSrc from '../../assets/images/search-icon.png';
+import logoSrc from '../../../assets/images/marvel.svg';
+import searchIconSrc from '../../../assets/images/search-icon.png';
 
 import HeaderWrapper from './styles/HeaderWrapper';
 import HeaderLogo from './styles/HeaderLogo';
@@ -14,28 +14,34 @@ import HeaderInput from './styles/HeaderInput';
 import SearchIcon from './styles/SearchIcon';
 import HeaderActions from './styles/HeaderActions';
 
-import Toggle from '../commons/Toggle';
-import Container from '../commons/Container';
+import Toggle from '../../commons/Toggle';
+import Container from '../../commons/Container';
 
-import { CharactersContext } from '../../context';
+import { CharactersContext, ComicDetailContext } from '../../../context';
 
 const Header = ({ theme, isLight, toggleTheme }) => {
   let searchTimer;
   const inputRef = useRef(null);
   const [isInputActive, setInputActive] = useState(false);
-  const { setLoading } = useContext(CharactersContext);
+  const { setLoading: setLoadingCharacters, setSearch } = useContext(CharactersContext);
+  const { setLoading: setLoadingComicDetail, setComicId } = useContext(ComicDetailContext);
 
   const handleInputChange = () => {
-    setLoading(true);
+    setLoadingCharacters(true);
+
     clearInterval(searchTimer);
     searchTimer = setTimeout(() => {
-      // const search = inputRef.current.value;
-      // console.log(search);
-      // console.log(search.includes('comics/'));
-      // console.log(search.split('/'));
-      // console.log(search.split('/')[5]);
-      // if (search.includes('comics/')) console.log('is comic');
-      // setSearch();
+      const search = inputRef.current.value;
+      const isComic = search.includes('comics/');
+
+      if (isComic) {
+        setLoadingComicDetail(true);
+        setLoadingCharacters(false);
+        setComicId(search.split('/')[5]);
+        return;
+      }
+      setComicId(null);
+      setSearch(search);
     }, 600);
   };
 
