@@ -10,7 +10,7 @@ import Header from './components/Header';
 import Main from './components/Main';
 import CardsList from './components/CardsList';
 
-import CharactersProvider from './context';
+import { CharactersProvider, ComicsProvider } from './context';
 
 const App = () => {
   const [currentTheme, setCurrentTheme] = useState(lightTheme);
@@ -23,11 +23,13 @@ const App = () => {
   return (
     <ThemeProvider theme={currentTheme}>
       <CharactersProvider>
-        <GlobalStyles />
-        <Header theme={currentTheme} isLight={isLightTheme()} toggleTheme={toggleTheme} />
-        <Main>
-          <CardsList />
-        </Main>
+        <ComicsProvider>
+          <GlobalStyles />
+          <Header theme={currentTheme} isLight={isLightTheme()} toggleTheme={toggleTheme} />
+          <Main>
+            <CardsList />
+          </Main>
+        </ComicsProvider>
       </CharactersProvider>
     </ThemeProvider>
   );
