@@ -8,29 +8,32 @@ import { TS, HASH, API_KEY, API_URL } from '../constants';
 export const CharactersContext = createContext();
 
 const CharactersProvider = ({ children }) => {
+  const [search, setSearch] = useState('');
+  const [limit, setLimit] = useState(20);
   const [loading, setLoading] = useState(true);
   const [characters, setCharacters] = useState([]);
 
-  const getCharacters = async () => {
-    const QUERIES = qs.stringify({
-      ts: TS,
-      apikey: API_KEY,
-      hash: HASH,
-    });
-    const charactersResponse = await axios.get(`${API_URL}characters?${QUERIES}`);
-    setLoading(false);
-    setCharacters(charactersResponse.data.data);
-  };
-
   useEffect(() => {
+    const getCharacters = async () => {
+      const queries = qs.stringify({
+        ts: TS,
+        apikey: API_KEY,
+        hash: HASH,
+      });
+      const charactersResponse = await axios.get(`${API_URL}characters?${queries}&limit=${limit}`);
+      setLoading(false);
+      setCharacters(charactersResponse.data.data.results);
+    };
     getCharacters();
-  }, []);
+  }, [search, limit]);
 
   return (
     <CharactersContext.Provider
       value={{
-        characters,
         loading,
+        characters,
+        setLimit,
+        setSearch,
       }}
     >
       {children}

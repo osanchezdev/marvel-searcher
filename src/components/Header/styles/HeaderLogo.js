@@ -5,6 +5,8 @@ const HeaderLogo = styled.img`
   flex-basis: 10%;
   position: relative;
   border-right: 2px solid ${({ theme }) => theme.body};
+
+  transition: border-right-color 300ms ease;
 `;
 
 export default HeaderLogo;
