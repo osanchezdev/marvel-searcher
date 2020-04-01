@@ -33,6 +33,7 @@ const ComicsProvider = ({ children }) => {
         loading,
         comics,
         setCollectionUri,
+        setLoading,
       }}
     >
       {children}

@@ -10,10 +10,11 @@ import { ComicsContext } from '../../context';
 
 const Card = ({ character }) => {
   const [showModal, setShowModal] = useState(false);
-  const { setCollectionUri } = useContext(ComicsContext);
+  const { setCollectionUri, setLoading } = useContext(ComicsContext);
   const { id, name, thumbnail, comics } = character;
 
   const handleOpen = () => {
+    setLoading(true);
     setCollectionUri(comics.collectionURI);
     setShowModal(true);
   };
