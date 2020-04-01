@@ -3,13 +3,14 @@ import React, { useState } from 'react';
 // Import theme stuff
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './themes';
-
 import GlobalStyles from './styles';
 
 // Custom components
 import Header from './components/Header';
 import Main from './components/Main';
 import CardsList from './components/CardsList';
+
+import CharactersProvider, { CharactersContext } from './context';
 
 const App = () => {
   const [currentTheme, setCurrentTheme] = useState(lightTheme);
@@ -21,11 +22,13 @@ const App = () => {
 
   return (
     <ThemeProvider theme={currentTheme}>
-      <GlobalStyles />
-      <Header theme={currentTheme} isLight={isLightTheme()} toggleTheme={toggleTheme} />
-      <Main>
-        <CardsList />
-      </Main>
+      <CharactersProvider>
+        <GlobalStyles />
+        <Header theme={currentTheme} isLight={isLightTheme()} toggleTheme={toggleTheme} />
+        <Main>
+          <CardsList />
+        </Main>
+      </CharactersProvider>
     </ThemeProvider>
   );
 };
