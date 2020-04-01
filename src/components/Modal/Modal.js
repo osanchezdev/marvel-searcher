@@ -5,6 +5,7 @@ import ModalWrapper from './styles/ModalWrapper';
 import ModalCard from './styles/ModalCard';
 import ModalTitle from './styles/ModalTitle';
 import ModalCloseBtn from './styles/ModalCloseBtn';
+import ComicsList from '../ComicsList';
 
 const Modal = ({ show, handleClose, title }) => {
   return (
@@ -16,7 +17,7 @@ const Modal = ({ show, handleClose, title }) => {
             <span aria-hidden="true">&times;</span>
           </ModalCloseBtn>
         </ModalTitle>
-        I'm a modal
+        <ComicsList />
       </ModalCard>
     </ModalWrapper>
   );
