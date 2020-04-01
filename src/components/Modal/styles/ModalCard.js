@@ -4,6 +4,7 @@ const ModalCard = styled.div`
   background: ${({ theme }) => theme.body};
   color: ${({ theme }) => theme.text};
   cursor: default;
+  z-index: 2;
   width: 100%;
   max-width: 437px;
   padding: 1rem;
