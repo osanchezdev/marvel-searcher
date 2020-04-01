@@ -21,6 +21,10 @@ const CharactersProvider = ({ children }) => {
         hash: HASH,
       });
       const charactersResponse = await axios.get(`${API_URL}characters?${queries}&limit=${limit}`);
+      const comic = await axios.get(
+        `http://gateway.marvel.com/v1/public/characters/1011334/comics?${queries}`,
+      );
+      console.log(comic);
       setLoading(false);
       setCharacters(charactersResponse.data.data.results);
     };
