@@ -43,6 +43,10 @@ const Header = ({ theme, isLight, toggleTheme }) => {
   );
 };
 
-Header.propTypes = {};
+Header.propTypes = {
+  theme: shape().isRequired,
+  isLight: bool.isRequired,
+  toggleTheme: func.isRequired,
+};
 
 export default Header;
