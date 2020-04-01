@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { oneOfType, arrayOf, node } from 'prop-types';
 import axios from 'axios';
+import qs from 'query-string';
 
 import { TS, HASH, API_KEY, API_URL } from '../constants';
 
@@ -21,7 +22,9 @@ const CharactersProvider = ({ children }) => {
     setCharacters(charactersResponse.data.data);
   };
 
-  useEffect(() => getCharacters(), []);
+  useEffect(() => {
+    getCharacters();
+  }, []);
 
   return (
     <CharactersContext.Provider
