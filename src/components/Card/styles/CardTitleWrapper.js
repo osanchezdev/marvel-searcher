@@ -7,7 +7,7 @@ const CardTitleWrapper = styled.div`
   width: 100%;
   height: 35%;
   background: rgb(0, 0, 0);
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 45%, rgba(0, 0, 0, 0) 80%);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 35%, rgba(0, 0, 0, 0) 100%);
   color: #fff;
 `;
 

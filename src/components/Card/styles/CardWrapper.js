@@ -6,15 +6,10 @@ const CardWrapper = styled.div`
   min-height: 380px;
   background: gray;
   border-radius: 0.3rem;
-  margin-bottom: 20px;
   margin: 5px;
+  margin-bottom: 15px;
   position: relative;
   overflow: hidden;
-
-  /* &:nth-child(6n):last-child {
-    margin-right: auto;
-    margin-left: 3%;
-  } */
 `;
 
 export default CardWrapper;
