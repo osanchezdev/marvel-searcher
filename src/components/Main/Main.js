@@ -1,17 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { oneOfType, arrayOf, node } from 'prop-types';
 
 import MainWrapper from './styles/MainWrapper';
 
 import Loader from '../commons/Loader';
 
+import { CharactersContext } from '../../context';
+
 const Main = ({ children }) => {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    window.setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  }, []);
+  const { loading } = useContext(CharactersContext);
   return <MainWrapper>{loading ? <Loader loading={loading} /> : children}</MainWrapper>;
 };
 

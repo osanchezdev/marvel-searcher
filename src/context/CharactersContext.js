@@ -8,18 +8,19 @@ import { TS, HASH, API_KEY, API_URL } from '../constants';
 export const CharactersContext = createContext();
 
 const CharactersProvider = ({ children }) => {
+  const [limit, setLimit] = useState(20);
   const [loading, setLoading] = useState(true);
   const [characters, setCharacters] = useState([]);
 
   const getCharacters = async () => {
-    const QUERIES = qs.stringify({
+    const queries = qs.stringify({
       ts: TS,
       apikey: API_KEY,
       hash: HASH,
     });
-    const charactersResponse = await axios.get(`${API_URL}characters?${QUERIES}`);
+    const charactersResponse = await axios.get(`${API_URL}characters?${queries}&limit=${limit}`);
     setLoading(false);
-    setCharacters(charactersResponse.data.data);
+    setCharacters(charactersResponse.data.data.results);
   };
 
   useEffect(() => {
@@ -31,6 +32,7 @@ const CharactersProvider = ({ children }) => {
       value={{
         characters,
         loading,
+        setLimit,
       }}
     >
       {children}
