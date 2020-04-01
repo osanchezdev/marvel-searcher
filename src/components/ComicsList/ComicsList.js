@@ -3,16 +3,18 @@ import React, { useContext } from 'react';
 import ComicsListWrapper from './styles/ComicsListWrapper';
 
 import { ComicsContext } from '../../context';
+import Loader from '../commons/Loader';
+import Comic from '../Comic/Comic';
 
 const ComicsList = () => {
-  const { comics } = useContext(ComicsContext);
-  console.log(comics);
+  const { loading, comics } = useContext(ComicsContext);
   return (
     <ComicsListWrapper>
-      ComicsList
-      {/* {characters.map(character => (
-        <Card key={character.id} character={character} />
-      ))} */}
+      {loading ? (
+        <Loader loading={loading} />
+      ) : (
+        comics.map(comic => <Comic key={comic.id} comic={comic} />)
+      )}
     </ComicsListWrapper>
   );
 };
