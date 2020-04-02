@@ -1,5 +1,6 @@
 import React, { useState, useRef, useContext } from 'react';
 import { shape, bool, func } from 'prop-types';
+import { Link } from 'react-router-dom';
 // import qs from 'query-string';
 // import axios from 'axios'
 
@@ -55,7 +56,9 @@ const Header = ({ theme, isLight, toggleTheme }) => {
   return (
     <HeaderWrapper>
       <Container>
-        <HeaderLogo src={logoSrc} />
+        <Link to="/">
+          <HeaderLogo src={logoSrc} />
+        </Link>
         <HeaderInputWrapper>
           <SearchIcon
             src={searchIconSrc}

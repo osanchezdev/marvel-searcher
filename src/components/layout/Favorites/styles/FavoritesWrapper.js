@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const MainWrapper = styled.div`
+const FavoritesWrapper = styled.div`
   min-height: 100vh;
   padding: 5rem;
   background: transparent;
@@ -8,4 +8,4 @@ const MainWrapper = styled.div`
   margin: 0 auto;
 `;
 
-export default MainWrapper;
+export default FavoritesWrapper;
