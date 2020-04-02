@@ -24,17 +24,21 @@ const CharactersProvider = ({ children }) => {
       ? qs.parse(`character=${urlQueries.character}`, { arrayFormat: 'comma' }).character
       : [];
     const queryComics = urlQueries.comic
-      ? qs.parse(`character=${urlQueries.comic}`, { arrayFormat: 'comma' })
+      ? qs.parse(`comic=${urlQueries.comic}`, { arrayFormat: 'comma' }).comic
       : [];
     let charactersByNameResponse = [];
-    setUrlComics(queryComics);
+    let urlComicsResponse = [];
+    typeof queryComics !== 'string'
+      ? queryComics.forEach(comic => urlComicsResponse.push(comic.replace('"', '')))
+      : (urlComicsResponse = queryComics.replace('"', ''));
 
     const getUrlCharacter = async name => {
       const characterByName = await axios.get(`${API_URL}/characters?name=${name}&${AUTH_QUERIES}`);
       charactersByNameResponse.push(characterByName.data.data.results[0]);
     };
-    queryCharacters.forEach(character => getUrlCharacter(character));
+    queryCharacters.forEach(character => getUrlCharacter(character.replace('"', '')));
     setLoading(false);
+    setUrlComics(urlComicsResponse);
     setUrlCharacters(charactersByNameResponse);
   }, []);
 
