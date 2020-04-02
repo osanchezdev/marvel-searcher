@@ -5,10 +5,16 @@ const HeaderActions = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  & a {
+  & > a {
     color: inherit;
     text-decoration: none;
     font-weight: 300;
+    position: relative;
+    flex-basis: 40%;
+
+    border-right: 1px solid ${({ theme }) => theme.body};
+
+    transition: border-right-color 300ms ease;
   }
 `;
 

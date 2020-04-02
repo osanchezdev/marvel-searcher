@@ -1,10 +1,7 @@
 import React, { useState, useRef, useContext } from 'react';
 import { shape, bool, func } from 'prop-types';
-import { Link } from 'react-router-dom';
-// import qs from 'query-string';
-// import axios from 'axios'
+import { Link, useLocation } from 'react-router-dom';
 
-//  Logo
 import logoSrc from '../../../assets/images/marvel.svg';
 import searchIconSrc from '../../../assets/images/search-icon.png';
 
@@ -23,6 +20,7 @@ import { CharactersContext, ComicDetailContext } from '../../../context';
 
 const Header = ({ theme, isLight, toggleTheme }) => {
   let searchTimer;
+  const { pathname } = useLocation();
   const inputRef = useRef(null);
   const [isInputActive, setInputActive] = useState(false);
   const {
@@ -39,7 +37,7 @@ const Header = ({ theme, isLight, toggleTheme }) => {
     clearInterval(searchTimer);
     searchTimer = setTimeout(() => {
       setUrlCharacters([]);
-      setUrlComics(null);
+      setUrlComics([]);
       const search = inputRef.current.value;
       const isComic = search.includes('comics/');
 
@@ -78,7 +76,7 @@ const Header = ({ theme, isLight, toggleTheme }) => {
         </HeaderInputWrapper>
         <HeaderActions>
           <Link to="/favorites">
-            <Star />
+            <Star fill={pathname === '/favorites'} />
           </Link>
           <Toggle theme={theme} isLight={isLight} toggleTheme={toggleTheme} />
         </HeaderActions>

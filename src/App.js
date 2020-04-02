@@ -9,7 +9,12 @@ import GlobalStyles from './styles';
 // Custom components
 import Header from './components/layout/Header';
 
-import { CharactersProvider, ComicsProvider, ComicDetailProvider } from './context';
+import {
+  CharactersProvider,
+  ComicsProvider,
+  ComicDetailProvider,
+  FavoritesProvider,
+} from './context';
 
 import Router from './routes';
 
@@ -23,17 +28,19 @@ const App = () => {
 
   return (
     <ThemeProvider theme={currentTheme}>
-      <CharactersProvider>
-        <ComicsProvider>
-          <ComicDetailProvider>
-            <GlobalStyles />
-            <BrowserRouter>
-              <Header theme={currentTheme} isLight={isLightTheme()} toggleTheme={toggleTheme} />
-              <Router />
-            </BrowserRouter>
-          </ComicDetailProvider>
-        </ComicsProvider>
-      </CharactersProvider>
+      <FavoritesProvider>
+        <CharactersProvider>
+          <ComicsProvider>
+            <ComicDetailProvider>
+              <GlobalStyles />
+              <BrowserRouter>
+                <Header theme={currentTheme} isLight={isLightTheme()} toggleTheme={toggleTheme} />
+                <Router />
+              </BrowserRouter>
+            </ComicDetailProvider>
+          </ComicsProvider>
+        </CharactersProvider>
+      </FavoritesProvider>
     </ThemeProvider>
   );
 };
