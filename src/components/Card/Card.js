@@ -41,10 +41,7 @@ Card.propTypes = {
       path: string,
       extension: string,
     }),
-    comics: shape({
-      collectionURI: string,
-    }).isRequired,
-  }).isRequired,
+  }),
 };
 
 export default Card;

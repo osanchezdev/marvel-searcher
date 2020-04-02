@@ -3,8 +3,7 @@ import { oneOfType, arrayOf, node } from 'prop-types';
 import axios from 'axios';
 import qs from 'query-string';
 
-import { TS, HASH, API_KEY, API_URL, TOTAL_CHARACTERS } from '../constants';
-
+import { API_URL, AUTH_QUERIES, TOTAL_CHARACTERS } from '../constants';
 import { getRandomInt } from '../utils';
 
 export const CharactersContext = createContext();
@@ -14,24 +13,38 @@ const CharactersProvider = ({ children }) => {
   const [limit, setLimit] = useState(20);
   const [loading, setLoading] = useState(true);
   const [characters, setCharacters] = useState([]);
+  const [urlCharacters, setUrlCharacters] = useState(null);
+  const [urlComics, setUrlComics] = useState(null);
+
+  useEffect(() => {
+    if (!window.location.search) return;
+
+    const urlQueries = qs.parseUrl(window.location.search).query;
+    const queryCharacters = urlQueries.character
+      ? qs.parse(`character=${urlQueries.character}`, { arrayFormat: 'comma' }).character
+      : [];
+    const queryComics = urlQueries.comic
+      ? qs.parse(`character=${urlQueries.comic}`, { arrayFormat: 'comma' })
+      : [];
+    let charactersByNameResponse = [];
+    setUrlComics(queryComics);
+
+    const getUrlCharacter = async name => {
+      const characterByName = await axios.get(`${API_URL}/characters?name=${name}&${AUTH_QUERIES}`);
+      charactersByNameResponse.push(characterByName.data.data.results[0]);
+    };
+    queryCharacters.forEach(character => getUrlCharacter(character));
+    setLoading(false);
+    setUrlCharacters(charactersByNameResponse);
+  }, []);
 
   useEffect(() => {
     const searchQueries = () =>
       search ? `&nameStartsWith=${search}` : `&offset=${getRandomInt(0, TOTAL_CHARACTERS)}`;
     const getCharacters = async () => {
-      const queries = qs.stringify({
-        ts: TS,
-        apikey: API_KEY,
-        hash: HASH,
-      });
       const charactersResponse = await axios.get(
-        `${API_URL}/characters?${queries}${searchQueries()}&limit=${limit}`,
+        `${API_URL}/characters?${AUTH_QUERIES}${searchQueries()}&limit=${limit}`,
       );
-      // console.log(charactersResponse);
-      // const comic = await axios.get(
-      //   `https://www.marvel.com/comics/issue/70718/the_amazing_spider-man_2018_22`,
-      // );
-      // console.log(comic);
       setLoading(false);
       setCharacters(charactersResponse.data.data.results);
     };
@@ -43,6 +56,9 @@ const CharactersProvider = ({ children }) => {
       value={{
         loading,
         characters,
+        urlCharacters,
+        urlComics,
+        setUrlCharacters,
         setLoading,
         setLimit,
         setSearch,
