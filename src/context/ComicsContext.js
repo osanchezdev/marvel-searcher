@@ -20,7 +20,7 @@ const ComicsProvider = ({ children }) => {
         hash: HASH,
       });
       const comicsResponse = await axios.get(
-        `${collectionUri}?${queries}&orderBy=onsaleDate&limit=20`,
+        `${collectionUri}?${queries}&orderBy=-onsaleDate&limit=20`,
       );
       // console.log(comicsResponse);
       setLoading(false);
