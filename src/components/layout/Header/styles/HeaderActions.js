@@ -5,6 +5,11 @@ const HeaderActions = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  & a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 300;
+  }
 `;
 
 export default HeaderActions;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
 // Import theme stuff
 import { ThemeProvider } from 'styled-components';
@@ -7,9 +8,10 @@ import GlobalStyles from './styles';
 
 // Custom components
 import Header from './components/layout/Header';
-import Main from './components/layout/Main';
 
 import { CharactersProvider, ComicsProvider, ComicDetailProvider } from './context';
+
+import Router from './routes';
 
 const App = () => {
   const [currentTheme, setCurrentTheme] = useState(darkTheme);
@@ -25,8 +27,10 @@ const App = () => {
         <ComicsProvider>
           <ComicDetailProvider>
             <GlobalStyles />
-            <Header theme={currentTheme} isLight={isLightTheme()} toggleTheme={toggleTheme} />
-            <Main />
+            <BrowserRouter>
+              <Header theme={currentTheme} isLight={isLightTheme()} toggleTheme={toggleTheme} />
+              <Router />
+            </BrowserRouter>
           </ComicDetailProvider>
         </ComicsProvider>
       </CharactersProvider>
