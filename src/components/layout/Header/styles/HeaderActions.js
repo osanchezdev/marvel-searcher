@@ -1,10 +1,19 @@
 import styled from 'styled-components';
 
+import { respondTo } from '../../../../styles/mixins';
+
 const HeaderActions = styled.div`
-  flex-basis: 10%;
+  flex-basis: 50%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  ${respondTo.xs`
+    flex-basis: 20%;
+  `}
+  ${respondTo.sm`
+    flex-basis: 15%;
+  `}
+
   & > a {
     color: inherit;
     text-decoration: none;
