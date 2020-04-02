@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const CheckboxLabel = styled.label`
   position: absolute;
-  top: 0;
+  top: 4px;
   left: 0;
   width: 42px;
   height: 26px;

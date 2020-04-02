@@ -16,6 +16,7 @@ import SearchIcon from './styles/SearchIcon';
 import HeaderActions from './styles/HeaderActions';
 
 import Toggle from '../../commons/Toggle';
+import Star from '../../commons/Star';
 import Container from '../../commons/Container';
 
 import { CharactersContext, ComicDetailContext } from '../../../context';
@@ -37,7 +38,7 @@ const Header = ({ theme, isLight, toggleTheme }) => {
 
     clearInterval(searchTimer);
     searchTimer = setTimeout(() => {
-      setUrlCharacters(null);
+      setUrlCharacters([]);
       setUrlComics(null);
       const search = inputRef.current.value;
       const isComic = search.includes('comics/');
@@ -76,6 +77,9 @@ const Header = ({ theme, isLight, toggleTheme }) => {
           />
         </HeaderInputWrapper>
         <HeaderActions>
+          <Link to="/favorites">
+            <Star />
+          </Link>
           <Toggle theme={theme} isLight={isLight} toggleTheme={toggleTheme} />
         </HeaderActions>
       </Container>
