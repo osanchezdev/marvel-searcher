@@ -20,7 +20,6 @@ const ComicDetailProvider = ({ children }) => {
         hash: HASH,
       });
       const comicDetailResponse = await axios.get(`${API_URL}/comics/${comicId}?${queries}`);
-      console.log(comicDetailResponse);
       setComicDetail(comicDetailResponse.data.data.results[0]);
       setLoading(false);
     };

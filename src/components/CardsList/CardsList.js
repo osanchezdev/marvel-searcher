@@ -6,13 +6,12 @@ import Card from './../Card';
 import { CharactersContext } from '../../context';
 
 const CardsList = () => {
-  const { characters } = useContext(CharactersContext);
-
+  const { characters, urlCharacters } = useContext(CharactersContext);
   return (
     <CardsListWrapper>
-      {characters.map(character => (
-        <Card key={character.id} character={character} />
-      ))}
+      {urlCharacters
+        ? urlCharacters.map(character => <Card key={character.id} character={character} />)
+        : characters.map(character => <Card key={character.id} character={character} />)}
     </CardsListWrapper>
   );
 };

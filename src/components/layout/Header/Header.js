@@ -23,7 +23,12 @@ const Header = ({ theme, isLight, toggleTheme }) => {
   let searchTimer;
   const inputRef = useRef(null);
   const [isInputActive, setInputActive] = useState(false);
-  const { setLoading: setLoadingCharacters, setSearch } = useContext(CharactersContext);
+  const {
+    setLoading: setLoadingCharacters,
+    setSearch,
+    setUrlCharacters,
+    setUrlComics,
+  } = useContext(CharactersContext);
   const { setLoading: setLoadingComicDetail, setComicId } = useContext(ComicDetailContext);
 
   const handleInputChange = () => {
@@ -31,6 +36,8 @@ const Header = ({ theme, isLight, toggleTheme }) => {
 
     clearInterval(searchTimer);
     searchTimer = setTimeout(() => {
+      setUrlCharacters(null);
+      setUrlComics(null);
       const search = inputRef.current.value;
       const isComic = search.includes('comics/');
 
