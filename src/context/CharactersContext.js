@@ -13,8 +13,8 @@ const CharactersProvider = ({ children }) => {
   const [limit, setLimit] = useState(20);
   const [loading, setLoading] = useState(true);
   const [characters, setCharacters] = useState([]);
-  const [urlCharacters, setUrlCharacters] = useState(null);
-  const [urlComics, setUrlComics] = useState(null);
+  const [urlCharacters, setUrlCharacters] = useState([]);
+  const [urlComics, setUrlComics] = useState([]);
 
   useEffect(() => {
     if (!window.location.search) return;
@@ -63,6 +63,7 @@ const CharactersProvider = ({ children }) => {
         urlCharacters,
         urlComics,
         setUrlCharacters,
+        setUrlComics,
         setLoading,
         setLimit,
         setSearch,

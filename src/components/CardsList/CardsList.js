@@ -11,15 +11,21 @@ const CardsList = () => {
   const { characters, urlCharacters } = useContext(CharactersContext);
   const { favorites } = useContext(FavoritesContext);
 
+  const filteredCharacters = () => {
+    if (pathname === '/') {
+      if (urlCharacters.length) return urlCharacters;
+      if (characters.length) return characters;
+      return 'No results';
+    }
+    if (favorites.length) return favorites;
+    return 'No favorites';
+  };
+
   return (
     <CardsListWrapper>
-      {pathname === '/'
-        ? urlCharacters
-          ? urlCharacters.map(character => <Card key={character.id} character={character} />)
-          : characters.map(character => <Card key={character.id} character={character} />)
-        : favorites.length
-        ? favorites.map(character => <Card key={character.id} character={character} />)
-        : ' No favorites'}
+      {typeof filteredCharacters() === 'string'
+        ? filteredCharacters()
+        : filteredCharacters().map(character => <Card key={character.id} character={character} />)}
     </CardsListWrapper>
   );
 };
