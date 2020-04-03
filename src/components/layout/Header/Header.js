@@ -3,10 +3,12 @@ import { shape, bool, func } from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 
 import logoSrc from '../../../assets/images/marvel.svg';
+import logoMobileSrc from '../../../assets/images/logom.png';
 import searchIconSrc from '../../../assets/images/search-icon.png';
 
 import HeaderWrapper from './styles/HeaderWrapper';
 import HeaderLogo from './styles/HeaderLogo';
+import HeaderLogoMobile from './styles/HeaderLogoMobile';
 import HeaderInputWrapper from './styles/HeaderInputWrapper';
 import HeaderInput from './styles/HeaderInput';
 import SearchIcon from './styles/SearchIcon';
@@ -56,7 +58,8 @@ const Header = ({ theme, isLight, toggleTheme }) => {
     <HeaderWrapper>
       <Container>
         <Link to="/">
-          <HeaderLogo src={logoSrc} />
+          <HeaderLogoMobile src={logoMobileSrc} alt="Marvel logo" />
+          <HeaderLogo src={logoSrc} alt="Marvel logo" />
         </Link>
         <HeaderInputWrapper>
           <SearchIcon

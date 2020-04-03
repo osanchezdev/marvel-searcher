@@ -10,7 +10,7 @@ const ComicDetailSubTitle = styled.p`
   margin: 0;
 
   &:last-of-type {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
   }
 `;
 
