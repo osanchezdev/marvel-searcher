@@ -5,7 +5,8 @@ const ComicDetailTitle = styled.div`
   position: relative;
   font-weight: 600;
   font-size: 25px;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
   padding-right: 25px;
 `;
 

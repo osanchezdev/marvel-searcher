@@ -20,7 +20,7 @@ const ModalCard = styled.div`
   ${respondTo.sm`
     top: 60px;
     padding: 1rem;
-    border-radius: 0.3rem;
+    border-radius: 0.5rem;
     height: unset;
     min-height: 420px;
   `}

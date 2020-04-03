@@ -18,7 +18,7 @@ const ComicDetail = () => {
   } = useContext(ComicDetailContext);
   const parsedDate = new Date(dates[0].date).toDateString().slice(4);
 
-  const filterDescriptionItems = () => {
+  const parseDescriptionData = () => {
     let items = [];
     let item = '';
     creators.items.forEach(creator => {
@@ -48,7 +48,7 @@ const ComicDetail = () => {
       <ComicDetailInfo>
         <ComicDetailTitle>{title}</ComicDetailTitle>
         <ComicDetailSubTitle>Published: {parsedDate}</ComicDetailSubTitle>
-        {filterDescriptionItems()}
+        {parseDescriptionData()}
         <ComicDetailDescription>
           {description ? description : 'No description.'}
         </ComicDetailDescription>

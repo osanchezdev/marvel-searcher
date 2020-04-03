@@ -3,7 +3,7 @@ import { respondTo } from '../../../styles/mixins';
 
 const CardWrapper = styled.div`
   cursor: pointer;
-  flex-basis: 45%;
+  flex-basis: 85%;
   min-height: 380px;
   background: gray;
   border-radius: 0.3rem;
