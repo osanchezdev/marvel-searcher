@@ -41,7 +41,7 @@ const ComicDetail = () => {
   return (
     <ComicDetailWrapper>
       <ComicDetailImage
-        src={`${thumbnail.path}.${thumbnail.extension}`}
+        src={`${thumbnail.path.replace('http', 'https')}.${thumbnail.extension}`}
         alt={title}
         title={title}
       />

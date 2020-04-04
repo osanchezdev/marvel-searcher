@@ -35,7 +35,7 @@ const Card = ({ character }) => {
   return (
     <>
       <CardWrapper onClick={handleOpen}>
-        <CardImage src={`${thumbnail.path}.${thumbnail.extension}`} alt={name} title={name} />
+        <CardImage src={`${thumbnail.path.replace('http','https')}.${thumbnail.extension}`} alt={name} title={name} />
         <CardTitleWrapper>{name}</CardTitleWrapper>
         <CardStarWrapper
           title={`${isFavorite ? 'Remove from ' : 'Add to '}favorites`}
