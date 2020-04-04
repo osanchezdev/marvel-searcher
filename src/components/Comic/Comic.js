@@ -11,7 +11,11 @@ const Comic = ({ comic }) => {
   const { title, description, thumbnail } = comic;
   return (
     <ComicWrapper>
-      <ComicThumbnail src={`${thumbnail.path}.${thumbnail.extension}`} alt={title} title={title} />
+      <ComicThumbnail
+        src={`${thumbnail.path.replace('http', 'https')}.${thumbnail.extension}`}
+        alt={title}
+        title={title}
+      />
       <ComicInfo>
         <ComicTitle>{title}</ComicTitle>
         <ComicDescription>{description ? description : 'No description.'}</ComicDescription>
